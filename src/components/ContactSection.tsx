@@ -21,9 +21,9 @@ const ContactSection = () => {
                 <Phone className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-foreground mb-1">Phone</h3>
-                <p className="text-muted-foreground font-body">+91 98765 43210</p>
-                <p className="text-muted-foreground font-body">+91 98765 43211</p>
+                <h3 className="font-heading font-bold text-foreground mb-1">ANIL V. SORATHIYA</h3>
+                <p className="text-muted-foreground font-body">+91 99097 09700</p>
+                <p className="text-muted-foreground font-body">+91 99097 07270 (Office)</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -32,7 +32,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">Email</h3>
-                <p className="text-muted-foreground font-body">info@omads.com</p>
+                <p className="text-muted-foreground font-body">omadsprint@gmail.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -42,8 +42,9 @@ const ContactSection = () => {
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">Address</h3>
                 <p className="text-muted-foreground font-body">
-                  123 Advertising Street, Business Hub,<br />
-                  City - 380001, Gujarat, India
+                  Shop No. 119, Ground Floor,<br />
+                  Parishram Complex, Station Road,<br />
+                  Bhuj-Gujarat. 370001.
                 </p>
               </div>
             </div>

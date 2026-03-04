@@ -38,23 +38,33 @@ const Footer = () => {
             <h3 className="font-heading font-bold text-background mb-4 text-lg">
               Get In Touch
             </h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-background/60 font-body text-sm">
-                  +91 98765 43210
-                </span>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-primary mt-1 shrink-0" />
+                <div className="flex flex-col">
+                  <span className="text-background font-body text-sm font-medium mb-1">
+                    ANIL V. SORATHIYA
+                  </span>
+                  <span className="text-background/60 font-body text-sm">
+                    +91 99097 09700
+                  </span>
+                  <span className="text-background/60 font-body text-sm">
+                    +91 99097 07270 (Office)
+                  </span>
+                </div>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-primary" />
+                <Mail className="w-4 h-4 text-primary shrink-0" />
                 <span className="text-background/60 font-body text-sm">
-                  info@omads.com
+                  omadsprint@gmail.com
                 </span>
               </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-background/60 font-body text-sm">
-                  Gujarat, India
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-primary mt-1 shrink-0" />
+                <span className="text-background/60 font-body text-sm leading-relaxed">
+                  Shop No. 119, Ground Floor,<br />
+                  Parishram Complex, Station Road,<br />
+                  Bhuj-Gujarat. 370001.
                 </span>
               </div>
             </div>

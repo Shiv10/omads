@@ -15,7 +15,7 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <PricingSection />
+      {/* <PricingSection /> */}
       <CtaBanner />
       <PortfolioSection />
       <ContactSection />
