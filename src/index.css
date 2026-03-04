@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* #e6fdfe — very light teal */
+    --background: 183 92% 95%;
+    /* #003d52 — dark teal */
+    --foreground: 196 100% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 196 100% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 196 100% 16%;
+
+    /* #f16702 — orange */
+    --primary: 25 98% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light teal tint for secondary surfaces */
+    --secondary: 195 50% 92%;
+    --secondary-foreground: 196 100% 16%;
+
+    --muted: 195 40% 90%;
+    --muted-foreground: 196 60% 35%;
+
+    --accent: 25 98% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 195 40% 82%;
+    --input: 195 40% 82%;
+    --ring: 25 98% 48%;
+
+    --radius: 0.5rem;
+
+    /* Brand palette */
+    --brand-orange: 25 98% 48%;        /* #f16702 */
+    --brand-dark: 196 100% 16%;        /* #003d52 */
+    --brand-medium: 195 94% 21%;       /* #034d66 */
+    --brand-light: 183 92% 95%;        /* #e6fdfe */
+    --brand-gray: 195 50% 92%;
+    --brand-dark-gray: 196 60% 30%;
+
+    /* Keep sidebar tokens */
+    --sidebar-background: 196 100% 16%;
+    --sidebar-foreground: 183 92% 95%;
+    --sidebar-primary: 25 98% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 195 94% 21%;
+    --sidebar-accent-foreground: 183 92% 95%;
+    --sidebar-border: 195 94% 25%;
+    --sidebar-ring: 25 98% 48%;
+  }
+
+  .dark {
+    --background: 196 100% 10%;
+    --foreground: 183 92% 95%;
+    --card: 196 100% 13%;
+    --card-foreground: 183 92% 95%;
+    --popover: 196 100% 13%;
+    --popover-foreground: 183 92% 95%;
+    --primary: 25 98% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 195 94% 18%;
+    --secondary-foreground: 183 92% 95%;
+    --muted: 195 94% 18%;
+    --muted-foreground: 183 60% 70%;
+    --accent: 25 98% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 195 94% 25%;
+    --input: 195 94% 25%;
+    --ring: 25 98% 48%;
+    --sidebar-background: 196 100% 10%;
+    --sidebar-foreground: 183 92% 95%;
+    --sidebar-primary: 25 98% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 195 94% 18%;
+    --sidebar-accent-foreground: 183 92% 95%;
+    --sidebar-border: 195 94% 25%;
+    --sidebar-ring: 25 98% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
