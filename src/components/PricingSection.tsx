@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const printPricing = [
+// Pricing data kept for future use
+const ecoUvPricing = [
   { material: "Flex Black Back", rate: "25.00/-" },
   { material: "Vinyl Sticker (Glossy/Matt)", rate: "30.00/-" },
   { material: "Vinyl Sticker - 3 Layer", rate: "40.00/-" },
@@ -43,37 +44,20 @@ const generalPricing = [
   { material: "Canopy (6 x 6 x 7)", rate: "3,200/-" },
 ];
 
-const PriceTable = ({ items }: { items: { material: string; rate: string }[] }) => (
-  <div className="overflow-hidden rounded-lg border border-border">
-    <table className="w-full">
-      <thead>
-        <tr className="bg-primary">
-          <th className="text-left px-5 py-3 text-primary-foreground font-heading font-bold text-sm uppercase tracking-wide">
-            Material
-          </th>
-          <th className="text-right px-5 py-3 text-primary-foreground font-heading font-bold text-sm uppercase tracking-wide">
-            Rate (₹/sq.ft)
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {items.map((item, i) => (
-          <tr
-            key={item.material}
-            className={`${
-              i % 2 === 0 ? "bg-card" : "bg-secondary"
-            } hover:bg-accent/10 transition-colors`}
-          >
-            <td className="px-5 py-3 text-foreground font-body text-sm">
-              {item.material}
-            </td>
-            <td className="px-5 py-3 text-foreground font-heading font-bold text-sm text-right">
-              ₹{item.rate}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+const ecoUvMaterials = ecoUvPricing.map((item) => item.material);
+const generalMaterials = generalPricing.map((item) => item.material);
+
+const MaterialList = ({ items }: { items: string[] }) => (
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {items.map((item, i) => (
+      <div
+        key={i}
+        className="flex items-center gap-3 px-4 py-3 rounded-lg bg-card border border-border hover:border-primary/40 hover:bg-accent/10 transition-colors"
+      >
+        <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+        <span className="text-foreground font-body text-sm">{item}</span>
+      </div>
+    ))}
   </div>
 );
 
@@ -83,10 +67,10 @@ const PricingSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-            Our <span className="text-primary">Price List</span>
+            Our <span className="text-primary">Services</span>
           </h2>
           <p className="text-muted-foreground font-body max-w-xl mx-auto">
-            Competitive pricing on all printing materials and signage solutions.
+            A wide range of printing materials and signage solutions to meet your needs.
           </p>
         </div>
 
@@ -107,17 +91,10 @@ const PricingSection = () => {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="general">
-              <PriceTable items={generalPricing} />
-              <p className="text-xs text-muted-foreground mt-4 font-body">
-                * Print charge minimum ₹50/-. Minimum frame charge ₹120/-. Design charge minimum ₹150/-.
-                Rates may vary based on roll size (3, 4, 5, 6, 8, 10). Welding charges for frames are separate.
-              </p>
+              <MaterialList items={generalMaterials} />
             </TabsContent>
             <TabsContent value="ecouv">
-              <PriceTable items={printPricing} />
-              <p className="text-xs text-muted-foreground mt-4 font-body">
-                * Print charge minimum ₹180/-. Rates may vary based on roll size (3, 4, 5).
-              </p>
+              <MaterialList items={ecoUvMaterials} />
             </TabsContent>
           </Tabs>
         </div>
