@@ -1,6 +1,45 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
+
+const SEND_EMAIL_URL = "https://gpnswtaqwqraeujxadit.supabase.co/functions/v1/send-email";
 
 const ContactSection = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(SEND_EMAIL_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || "Failed to send message. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      setErrorMsg("Something went wrong. Please try again later.");
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
@@ -51,32 +90,58 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
               placeholder="Your Name"
+              required
               className="w-full px-4 py-3 rounded-md border border-border bg-card text-card-foreground font-body focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <input
               type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
               placeholder="Your Email"
+              required
               className="w-full px-4 py-3 rounded-md border border-border bg-card text-card-foreground font-body focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <input
               type="tel"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
               placeholder="Your Phone"
               className="w-full px-4 py-3 rounded-md border border-border bg-card text-card-foreground font-body focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
               placeholder="Your Message"
               rows={4}
+              required
               className="w-full px-4 py-3 rounded-md border border-border bg-card text-card-foreground font-body focus:outline-none focus:ring-2 focus:ring-primary resize-none"
             />
+
+            {status === "success" && (
+              <p className="text-green-600 font-body text-sm">
+                Message sent successfully! We'll get back to you soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-red-500 font-body text-sm">{errorMsg}</p>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-primary text-primary-foreground py-3 rounded-md font-heading font-bold uppercase tracking-wide text-sm hover:opacity-90 transition-opacity"
+              disabled={status === "loading"}
+              className="w-full bg-primary text-primary-foreground py-3 rounded-md font-heading font-bold uppercase tracking-wide text-sm hover:opacity-90 transition-opacity disabled:opacity-60"
             >
-              Send Message
+              {status === "loading" ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
